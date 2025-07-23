@@ -7,10 +7,20 @@ const MainControl = ({count}) => {
     const [subs, setSubs] = useState([]);
     const [type, setType] = useState(""); 
     const [price, setPrice] = useState("");
+    const [editId, setEditId] = useState(0);
 
     const eliminarItem = (id) => {
         const newList = subs.filter((item) => item.id !== id);
         setSubs(newList);
+    }
+    const editItem=(id) => {
+        setEditId(id);
+        const itemToEdit = subs.find((item) => item.id === id);
+        if (itemToEdit) {
+            setType(itemToEdit.type);
+            setPrice(itemToEdit.price);
+            
+        }
     }
 
   return (
@@ -24,9 +34,11 @@ const MainControl = ({count}) => {
       price={price}
       setSubs={setSubs}
       subs={subs}
+      editId={editId}
+      setEditId={setEditId}
       />
     </div>
-    <DisplayItems subs={subs} eliminarItem={eliminarItem} />
+    <DisplayItems subs={subs} eliminarItem={eliminarItem} editItem={editItem} />
     </>
   )
 }
