@@ -1,5 +1,5 @@
 import SingleItem from './SingleItem';
-const DisplayItems = ({ subs }) => {
+const DisplayItems = ({ subs, eliminarItem }) => {
 
   return (
     <>
@@ -7,7 +7,7 @@ const DisplayItems = ({ subs }) => {
     <div className="subscription-list">
     {
         subs.map(item=>(
-            <SingleItem  id={item.id} price={item.price} type={item.type} key={item.id} />
+            <SingleItem  id={item.id} price={item.price} type={item.type} key={item.id} eliminarItem={eliminarItem} />
         ))
     }
     </div>

@@ -7,6 +7,12 @@ const MainControl = ({count}) => {
     const [subs, setSubs] = useState([]);
     const [type, setType] = useState(""); 
     const [price, setPrice] = useState("");
+
+    const eliminarItem = (id) => {
+        const newList = subs.filter((item) => item.id !== id);
+        setSubs(newList);
+    }
+
   return (
     <>
     <div className="main-form">
@@ -20,7 +26,7 @@ const MainControl = ({count}) => {
       subs={subs}
       />
     </div>
-    <DisplayItems subs={subs} />
+    <DisplayItems subs={subs} eliminarItem={eliminarItem} />
     </>
   )
 }
